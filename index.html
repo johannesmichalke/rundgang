@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>RUNDGANG</title>
     <script>
       (function (s, e, n, d, er) {
@@ -37,17 +38,18 @@
         height: 100vh;
         overflow: hidden;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: white;
         font-family: Arial, sans-serif;
+        border: 1px solid #0012cb;
       }
       .centered-div {
-        width: 40vw; /* Makes the image span 70% of the viewport width */
+        width: 40vw;
         max-width: 40%;
         height: auto;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
       }
@@ -106,24 +108,326 @@
       .overlay.active {
         display: block;
       }
-      .logo {
-        width: 100%; /* Make the image take up the full width of the div */
-        height: 100%; /* Optional: make the image stretch to fill the height */
-        object-fit: contain; /* Ensure the image scales without distortion */
-        display: block; /* Remove unwanted whitespace below the image */
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .rundgang-logo {
+        width: 70%;
+        height: auto;
+      }
+      .empower-text {
+        font-size: 1.7rem;
+        font-weight: bold;
+        color: #000;
+        margin-top: 5px;
+      }
+      .info {
+        font-size: 1rem;
+        color: #000;
+      }
+      .content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 95vh;
+        width: 100vw;
+      }
+      .horizontal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+      .vertical {
+        display: flex;
+        width: 100%;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #0012cb;
+      }
+      .mission-statement {
+        text-align: center;
+      }
+      .mission-statement h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #0012cb;
+        margin: 0;
+        padding: 0.5rem;
+      }
+      .mission-statement p {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        color: #000;
+        padding: 0;
+        margin: 0;
+      }
+      .problem-solution {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .problem-solution h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #0012cb;
+        margin: 0;
+        padding: 0;
+      }
+      .problem-solution p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #000;
+        margin: 0 0 0 0;
+      }
+      .problem {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid #0012cb;
+        text-align: center;
+        gap: 5px;
+      }
+      .solution {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        gap: 5px;
+        flex-direction: column;
+        justify-content: center;
+        border-left: 1px solid #0012cb;
+        text-align: center;
+      }
+      .example img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .benefits {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .benefits h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #0012cb;
+        margin: 0;
+      }
+
+      .benefits ul {
+        list-style-type: none;
+        width: 70%;
+        padding: 0;
+        display: inline-block;
+        margin: 0;
+      }
+
+      .benefits ul li {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #000;
+        margin: 5px 0;
+      }
+
+      .benefits li {
+        width: auto;
+      }
+
+      .list-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      #left {
+        flex: 1 1 60%;
+        border-left: 1px solid #0012cb;
+      }
+      #right {
+        flex: 1 1 40%;
+        max-width: 500px;
+        border-right: 1px solid #0012cb;
+      }
+      .newsletter {
+        height: 5vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #0012cb;
+      }
+      #openPopup {
+        background-color: #0012cb;
+        color: white;
+        padding: 10px 40px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      #openPopup:hover {
+        background-color: darkblue;
+      }
+
+      /* Mobile Styles */
+      @media (max-width: 768px) {
+        /* Hide the original desktop content and newsletter button on mobile */
+        .content,
+        .newsletter {
+          display: none;
+        }
+
+        body {
+          overflow: auto;
+          border: none;
+        }
+
+        /* A mobile container that only shows on small screens */
+        .mobile-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100vw;
+          height: 100vh;
+          background: white;
+          padding: 1rem;
+          text-align: center;
+        }
+        .mobile-container img {
+          width: 60%;
+          height: auto;
+          cursor: pointer;
+        }
+        .mobile-container p {
+          margin-top: 20px;
+          font-size: 0.5rem;
+          color: lightgray;
+        }
+      }
+
+      /* Hide mobile-container on desktop */
+      @media (min-width: 769px) {
+        .mobile-container {
+          display: none;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="centered-div">
-      <img id="openPopup" class="logo" src="logo.png" alt="RUNDGANG Logo" />
+    <!-- Desktop Content -->
+    <div class="content">
+      <div id="left" class="horizontal">
+        <div class="vertical">
+          <div class="logo-container">
+            <img src="logo.svg" alt="Rundgang Logo" class="rundgang-logo" />
+          </div>
+          <div class="info">
+            info@rundgang.studio &nbsp; || &nbsp; rundgang.studio
+          </div>
+        </div>
+        <div class="vertical mission-statement">
+          <h1>MISSION STATEMENT</h1>
+          <p>
+            Bringing together Creatives and <br />
+            Enthusiasts to buy, sell, indulge in,<br />and empower Creation.
+          </p>
+        </div>
+        <div class="vertical problem-solution">
+          <div class="problem">
+            <h1>PROBLEM</h1>
+            <p>
+              A saturated creative scene is <br />
+              limiting the Creatives’ individuality <br />
+              through a lack of financial freedom <br />
+              and artistic independence. <br />Enthusiasts are showing a growing
+              <br />
+              but unfulfilled need for individuality.
+            </p>
+          </div>
+          <div class="solution">
+            <h1>SOLUTION</h1>
+            <p>
+              Rundgang enables Creatives to <br />
+              gain recognition and make a living <br />
+              by selling their works, while <br />
+              allowing Enthusiasts to purchase <br />new and unique products.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="right" class="horizontal">
+        <div class="vertical example">
+          <img src="image.png" alt="Example Image" />
+        </div>
+        <div class="vertical benefits">
+          <div class="creatives">
+            <h1>THE CREATIVES' BENEFITS</h1>
+            <div class="list-wrapper">
+              <ul>
+                <li>Artistic independency</li>
+                <li>Exposure to engaged Enthusiasts</li>
+                <li>Financial freedom</li>
+              </ul>
+            </div>
+          </div>
+          <div class="customers">
+            <h1>THE CUSTOMERS' BENEFITS</h1>
+            <div class="list-wrapper">
+              <ul>
+                <li>Expressing individuality</li>
+                <li>Access to inspiration</li>
+                <li>Support and enable</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <!-- Desktop Newsletter Button -->
+    <div class="newsletter">
+      <button id="openPopup">NEWSLETTER</button>
+    </div>
+
+    <!-- Mobile Container -->
+    <div class="mobile-container">
+      <img src="logo.svg" alt="Rundgang Logo" id="mobileLogo" />
+      <p>
+        open this page on a desktop<br />
+        for more information.
+      </p>
+    </div>
+
+    <div class="centered-div"></div>
     <!-- Popup Modal -->
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
       <div class="popup-close" id="closePopup">&times;</div>
       <div
+        style="text-align: left"
         class="sender-form-field"
         data-sender-form-id="m4mw0j4zdwp06jeidso"
       ></div>
@@ -135,12 +439,23 @@
       const closePopupButton = document.getElementById("closePopup");
       const popup = document.getElementById("popup");
       const overlay = document.getElementById("overlay");
+      const mobileLogo = document.getElementById("mobileLogo");
 
-      // Open popup
-      openPopupButton.addEventListener("click", () => {
-        popup.classList.add("active");
-        overlay.classList.add("active");
-      });
+      // Open popup (desktop button)
+      if (openPopupButton) {
+        openPopupButton.addEventListener("click", () => {
+          popup.classList.add("active");
+          overlay.classList.add("active");
+        });
+      }
+
+      // Open popup (mobile logo)
+      if (mobileLogo) {
+        mobileLogo.addEventListener("click", () => {
+          popup.classList.add("active");
+          overlay.classList.add("active");
+        });
+      }
 
       // Close popup
       closePopupButton.addEventListener("click", () => {
